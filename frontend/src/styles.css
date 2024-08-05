@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+/* these styles prevents white box around special characters like "<" or "="" */
+pre code span.token.operator,       
+pre code span.token.punctuation {
+  background: none;
+}

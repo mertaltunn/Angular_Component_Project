@@ -1,7 +1,26 @@
-/* tooltip.component.css */
+@import '~prismjs/themes/prism.css'; 
+pre {
+  background-color: #282c34; 
+  color: #abb2bf; 
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-size: 0.9rem;
+  padding: 1em;
+  border-radius: 0.3em;
+}
 
-pre code {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.875rem; /* Adjust as needed */
-  }
-  
+code {
+  background-color: transparent; 
+  color: inherit;
+  padding: 0;
+  border: 0;
+}
+pre code span.token.operator,
+pre code span.token.punctuation {
+  background: none;
+}
+pre code span.token.operator,
+pre code span.token.punctuation {
+  background: none !important;
+  box-shadow: none !important;
+}
+

@@ -24,7 +24,7 @@
     <div [ngClass]="selectedComponent.animation">
       <p>{{ selectedComponent.description }}</p>
       <pre class="bg-dark text-light p-3 rounded">
-        <code>{{ selectedComponent.code }}</code>
+        <code [innerHTML]="safeCode"></code>
       </pre>
     </div>
   </div>

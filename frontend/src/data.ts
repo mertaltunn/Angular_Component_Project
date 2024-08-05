@@ -18,7 +18,10 @@ export const sample_components: ComponentModel[] = [
     icon: 'bi-info-circle',
     animation: 'animate__animated animate__fadeIn',
     description: 'A tooltip provides additional information on hover.',
-    code: `<button type="button" class="btn btn-outline-secondary me-2" placement="top" ngbTooltip="Tooltip on top">
+    code: `
+  <div class="container mt-3">
+    <h2>Tooltip Component</h2>
+    <button type="button" class="btn btn-outline-secondary me-2" placement="top" ngbTooltip="Tooltip on top">
         Tooltip on top
     </button>
     <button type="button" class="btn btn-outline-secondary me-2" placement="end" ngbTooltip="Tooltip on right">
