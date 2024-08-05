@@ -5,5 +5,7 @@ export class ComponentModel {
   animation!: string;
   description!: string;
   code!: string;
-  hidden!: boolean
+  hidden!: boolean;
+  selectorKey!: string;
+  route!: string;
 }

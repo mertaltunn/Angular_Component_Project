@@ -8,7 +8,7 @@ import { sample_components } from 'src/data';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchbarComponent implements OnInit {
-  component: ComponentModel = sample_components[0];
+   component: ComponentModel = sample_components[0];
   
   
   ngOnInit(): void {}

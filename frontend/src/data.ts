@@ -8,7 +8,9 @@ export const sample_components: ComponentModel[] = [
     animation: 'animate__animated animate__fadeIn',
     description: 'A search bar allows users to search for content.',
     code: `<input type="text" class="form-control" placeholder="Search...">`,
-    hidden: false
+    hidden: false,
+    selectorKey: "<app-searchbar>",
+    route:"search-bar"
   },
   {
     id: '1',
@@ -16,8 +18,22 @@ export const sample_components: ComponentModel[] = [
     icon: 'bi-info-circle',
     animation: 'animate__animated animate__fadeIn',
     description: 'A tooltip provides additional information on hover.',
-    code: `<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip text">Hover me</button>`,
-    hidden: false
+    code: `<button type="button" class="btn btn-outline-secondary me-2" placement="top" ngbTooltip="Tooltip on top">
+        Tooltip on top
+    </button>
+    <button type="button" class="btn btn-outline-secondary me-2" placement="end" ngbTooltip="Tooltip on right">
+        Tooltip on right
+    </button>
+    <button type="button" class="btn btn-outline-secondary me-2" placement="bottom" ngbTooltip="Tooltip on bottom">
+        Tooltip on bottom
+    </button>
+    <button type="button" class="btn btn-outline-secondary me-2" placement="start" ngbTooltip="Tooltip on left">
+        Tooltip on left
+    </button>
+  </div>`,
+    hidden: false,
+    selectorKey:"<app-tooltip>",
+    route:"tooltip"
   },
   {
     id: '2',
@@ -26,6 +42,8 @@ export const sample_components: ComponentModel[] = [
     animation: 'animate__animated animate__fadeIn',
     description: 'A modal displays content in a dialog overlay.',
     code: `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Launch modal</button>`,
-    hidden:false
+    hidden:false,
+    selectorKey:"<app-modal>",
+    route:"modal"
   }
 ];

@@ -8,7 +8,7 @@ import { sample_components } from 'src/data';
   styleUrls: ['./tooltip.component.css'],
 })
 export class TooltipComponent implements OnInit {
-  component: ComponentModel = sample_components[1];
+   component: ComponentModel = sample_components[1];
 
 
   ngOnInit(): void {}

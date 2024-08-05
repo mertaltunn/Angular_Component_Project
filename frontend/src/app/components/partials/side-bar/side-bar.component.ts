@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ComponentService } from 'src/app/services/component.service';
 import { ComponentModel } from 'src/app/shared/models/ComponentModel';
 import { TooltipComponent } from '../tooltip/tooltip.component';
 import { SearchbarComponent } from '../search-bar/search-bar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,7 +13,7 @@ export class SidebarComponent {
   componentM: ComponentModel[] = [];
   selectedComponent: ComponentModel | null = null;
 
-  constructor(private componentService: ComponentService) {
+  constructor(public router:Router) {
     // Adding SearchbarComponent details
     const searchbar = new SearchbarComponent();
     const tooltip = new TooltipComponent();
@@ -24,10 +24,18 @@ export class SidebarComponent {
   selectComponent(component: ComponentModel) {
     this.selectedComponent = component;
     this.selectedComponent.hidden =!this.selectedComponent.hidden
+    this.router.navigate([component.route])
+    // let demoElement = document.getElementById("demos") as HTMLDivElement
+    // for (let i = 0; i < this.componentM.length; i++) {
+    //   const element = this.componentM[i];
+     
+    //   if(this.selectedComponent == element){
+    //    demoElement.innerHTML = element.selectorKey //sor
+    //   }
+    // }
+    // return this.selectedComponent
   }
-  clickEvent(component: ComponentModel) {
-    this.componentM[0].hidden = !this.componentM[0].hidden;
-  }
+  
 
  
 }
