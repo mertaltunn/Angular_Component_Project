@@ -5,8 +5,8 @@ import { SearchbarComponent } from '../search-bar/search-bar.component';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import * as Prism from 'prismjs';
-import 'prismjs/components/prism-javascript'; // Import languages as needed
-import 'prismjs/components/prism-typescript'; // Import languages as needed
+import 'prismjs/components/prism-javascript'; 
+import 'prismjs/components/prism-typescript'; 
 
 @Component({
   selector: 'app-sidebar',
@@ -41,11 +41,21 @@ export class SidebarComponent implements AfterViewChecked {
     );
     this.router.navigate([component.route]);
     this.cdr.detectChanges(); // Ensure the changes are detected immediately
+    this.bttonClickCode = false;
+    this.bttonClickDemo =false;
   }
 
   ngAfterViewChecked() {
     if (this.selectedComponent) {
       Prism.highlightAll();
     }
+  }
+  bttonClickCode = false;
+  bttonClickDemo = false;
+  buttonClickCode(){
+    this.bttonClickCode = !this.bttonClickCode
+  }
+  buttonClickDemo(){
+    this.bttonClickDemo = !this.bttonClickDemo
   }
 }

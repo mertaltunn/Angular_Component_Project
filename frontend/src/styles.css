@@ -1,5 +1,5 @@
-/* these styles prevents white box around special characters like "<" or "="" */
-pre code span.token.operator,       
+
+pre code span.token.operator,       /* these styles prevents white box around special characters like "<" or "="" */
 pre code span.token.punctuation {
   background: none;
 }

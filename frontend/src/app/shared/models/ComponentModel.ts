@@ -6,6 +6,5 @@ export class ComponentModel {
   description!: string;
   code!: string;
   hidden!: boolean;
-  selectorKey!: string;
   route!: string;
 }

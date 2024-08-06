@@ -9,7 +9,6 @@ export const sample_components: ComponentModel[] = [
     description: 'A search bar allows users to search for content.',
     code: `<input type="text" class="form-control" placeholder="Search...">`,
     hidden: false,
-    selectorKey: "<app-searchbar>",
     route:"search-bar"
   },
   {
@@ -35,7 +34,6 @@ export const sample_components: ComponentModel[] = [
     </button>
   </div>`,
     hidden: false,
-    selectorKey:"<app-tooltip>",
     route:"tooltip"
   },
   {
@@ -46,7 +44,6 @@ export const sample_components: ComponentModel[] = [
     description: 'A modal displays content in a dialog overlay.',
     code: `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Launch modal</button>`,
     hidden:false,
-    selectorKey:"<app-modal>",
     route:"modal"
   }
 ];
