@@ -38,12 +38,51 @@ export const sample_components: ComponentModel[] = [
   },
   {
     id: '2',
-    name: 'Modal',
+    name: 'Popover',
     icon: 'bi-window',
     animation: 'animate__animated animate__fadeIn',
-    description: 'A modal displays content in a dialog overlay.',
-    code: `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Launch modal</button>`,
+    description: 'A popover provides additional information on click.',
+    code: `
+<button
+	type="button"
+	class="btn btn-outline-secondary me-2"
+	placement="top"
+	ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+	popoverTitle="Popover on top"
+>
+	Popover on top
+</button>
+
+<button
+	type="button"
+	class="btn btn-outline-secondary me-2"
+	placement="end"
+	ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+	popoverTitle="Popover on right"
+>
+	Popover on right
+</button>
+
+<button
+	type="button"
+	class="btn btn-outline-secondary me-2"
+	placement="bottom"
+	ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+	popoverTitle="Popover on bottom"
+>
+	Popover on bottom
+</button>
+
+<button
+	type="button"
+	class="btn btn-outline-secondary me-2"
+	placement="start"
+	ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+	popoverTitle="Popover on left"
+>
+	Popover on left
+</button>`,
     hidden:false,
-    route:"modal"
+    route:"popover"
   }
 ];

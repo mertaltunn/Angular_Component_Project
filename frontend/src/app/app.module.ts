@@ -8,6 +8,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { SidebarComponent } from './components/partials/side-bar/side-bar.component';
 import { SearchbarComponent } from './components/partials/search-bar/search-bar.component';
 import { TooltipComponent } from './components/partials/tooltip/tooltip.component';
+import { PopOverComponent } from './components/partials/popover/popover.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TooltipComponent } from './components/partials/tooltip/tooltip.componen
     HomeComponent,
     SidebarComponent,
     SearchbarComponent,
-    TooltipComponent
+    TooltipComponent,
+    PopOverComponent,
   ],
   imports: [
     BrowserModule,

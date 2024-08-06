@@ -1,6 +1,6 @@
-<div ngClass="page" class="d-flex text-center text-white bg-custom-dark vsc-initialized" style="height: 100vh;">
+<div class="d-flex text-center text-white bg-custom-dark vsc-initialized" style="height: 100vh;">
 
-  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px; border-right: 1px solid #ddd;">
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light-gray" style="width: 250px; border-right: 1px solid white;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <span class="fs-4 fw-bold">Components</span>
     </a>
@@ -16,35 +16,31 @@
     </ul>
   </div>
 
-  
+
   <div *ngIf="selectedComponent" class="flex-grow-1 p-4">
     <h2 class="mb-3">
-      <i class="bi" [ngClass]="selectedComponent.icon" ></i> {{ selectedComponent.name }}
+      <i class="bi" [ngClass]="selectedComponent.icon"></i> {{ selectedComponent.name }}
     </h2>
+
     <div [ngClass]="selectedComponent.animation">
       <p>{{ selectedComponent.description }}</p>
 
+      <div class="demos">
+        <div class="container-fluid"></div>
+        <router-outlet></router-outlet>
 
-    <div class="demos">
-      
-      <div class="container-fluid">
-        </div>
-          <router-outlet ></router-outlet>
-        </div>
+        
+      </div>
+      <hr>
 
       <button type="button" ngClass="btn" 
         class="btn btn-sm btn-outline-secondary me-2 toggle-code active" *ngIf="selectedComponent" (click)="buttonClickCode()" 
         placement="bottom" ngbTooltip="Code of the Component"> Code
       </button>
       
-      
-    <pre *ngIf="bttonClickCode" class="bg-dark text-light p-3 rounded text-start">
-      <code [innerHTML]="safeCode"></code>
-    </pre>
-   
-      
-      
+      <pre *ngIf="bttonClickCode" class="bg-dark text-light p-3 rounded text-start">
+        <code [innerHTML]="safeCode"></code>
+      </pre>
     </div>
   </div>
-
 </div>

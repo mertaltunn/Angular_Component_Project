@@ -3,6 +3,10 @@
 .bg-custom-dark {
   background-color: #343a40;
 }
+.bg-light-gray {
+  background-color: #696b6c !important; /* Light grey color */
+}
+
 
 pre {
   background-color: #282c34; 

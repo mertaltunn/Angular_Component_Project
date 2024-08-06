@@ -7,6 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import * as Prism from 'prismjs';
 import 'prismjs/components/prism-javascript'; 
 import 'prismjs/components/prism-typescript'; 
+import { PopOverComponent } from '../popover/popover.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,8 +23,10 @@ export class SidebarComponent implements AfterViewChecked {
     // Adding SearchbarComponent details
     const searchbar = new SearchbarComponent();
     const tooltip = new TooltipComponent();
+    const popover = new PopOverComponent();
     this.componentM.push(searchbar.component);
     this.componentM.push(tooltip.component);
+    this.componentM.push(popover.component);
   }
 
   decodeHTMLEntities(text: string) {
