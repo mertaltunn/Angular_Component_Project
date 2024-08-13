@@ -9,6 +9,8 @@ import { SidebarComponent } from './components/partials/side-bar/side-bar.compon
 import { SearchbarComponent } from './components/partials/search-bar/search-bar.component';
 import { TooltipComponent } from './components/partials/tooltip/tooltip.component';
 import { PopOverComponent } from './components/partials/popover/popover.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { PopOverComponent } from './components/partials/popover/popover.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,48 +1,20 @@
 @import '~prismjs/themes/prism.css'; 
 
 .bg-custom-dark {
-  background-color: #343a40;
+  background-color: #383838;
 }
 .bg-light-gray {
-  background-color: #696b6c !important; /* Light grey color */
+  background-color: #242424 !important; 
+  /* 242424 */  
 }
-
-
-pre {
-  background-color: #282c34; 
-  color: #abb2bf; 
-  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
-  font-size: 0.9rem;
-  padding: 1em;
-  border-radius: 0.3em;
+.sidebarComps{
+  color: white;
 }
-
-code {
-  background-color: transparent; 
-  color: inherit;
-  padding: 0;
-  border: 0;
+.header{
+  color: white;
 }
-pre code span.token.operator,
-pre code span.token.punctuation {
-  background: none !important;
-  box-shadow: none !important;
-}
-.btn-outline-secondary {
-  --bs-btn-color: #6c757d;
-  --bs-btn-border-color: #6c757d;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #6c757d;
-  --bs-btn-hover-border-color: #6c757d;
-  --bs-btn-focus-shadow-rgb: 108, 117, 125;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #6c757d;
-  --bs-btn-active-border-color: #6c757d;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-  --bs-btn-disabled-color: #6c757d;
-  --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #6c757d;
-  --bs-gradient: none;
+.text-white-custom {
+  color: white;
 }
 
 

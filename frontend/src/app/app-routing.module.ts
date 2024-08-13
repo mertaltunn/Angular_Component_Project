@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchbarComponent } from './components/partials/search-bar/search-bar.component';
 import { TooltipComponent } from './components/partials/tooltip/tooltip.component';
 import { PopOverComponent } from './components/partials/popover/popover.component';
+import { HomeComponent } from './components/pages/home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   {path:"", component:SearchbarComponent, pathMatch: "full"},
   {path:"search-bar", component:SearchbarComponent, pathMatch: "full"},
   {path:"tooltip", component:TooltipComponent, pathMatch: "full"}, 

@@ -1,21 +1,19 @@
 <div class="d-flex text-center text-white bg-custom-dark vsc-initialized" style="height: 100vh;">
-
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-light-gray" style="width: 250px; border-right: 1px solid white;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <span class="fs-4 fw-bold">Components</span>
-    </a>
+      <span class="fs-4 fw-bold text-white-custom">Components</span>
+    </a>    
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li *ngFor="let component of componentM" class="nav-item">
-        <button type="button" ngClass="btn"
-          class="nav-link d-flex align-items-center link-dark" (click)="selectComponent(component)">
+        <button class="sidebarComp nav-link d-flex align-items-center" type="button" (click)="selectComponent(component)">
+          
           <i class="bi" [ngClass]="component.icon"></i>
           <span class="ms-2">{{ component.name }}</span>
         </button>
       </li>
     </ul>
   </div>
-
 
   <div *ngIf="selectedComponent" class="flex-grow-1 p-4">
     <h2 class="mb-3">
@@ -28,8 +26,6 @@
       <div class="demos">
         <div class="container-fluid"></div>
         <router-outlet></router-outlet>
-
-        
       </div>
       <hr>
 
@@ -37,7 +33,7 @@
         class="btn btn-sm btn-outline-secondary me-2 toggle-code active" *ngIf="selectedComponent" (click)="buttonClickCode()" 
         placement="bottom" ngbTooltip="Code of the Component"> Code
       </button>
-      
+      <hr>
       <pre *ngIf="bttonClickCode" class="bg-dark text-light p-3 rounded text-start">
         <code [innerHTML]="safeCode"></code>
       </pre>

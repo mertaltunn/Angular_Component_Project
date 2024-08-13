@@ -3,3 +3,16 @@ pre code span.token.operator,       /* these styles prevents white box around sp
 pre code span.token.punctuation {
   background: none;
 }
+.bi {
+  font-family: "Bootstrap Icons" !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: inherit;
+  vertical-align: -0.125em;
+  text-align: center;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
