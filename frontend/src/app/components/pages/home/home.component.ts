@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ComponentApiService } from 'src/app/services/component-api.service';
 import { ComponentModel } from 'src/app/shared/models/ComponentModel';
 
 @Component({
@@ -18,22 +18,21 @@ export class HomeComponent {
     route: ''
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private componentApiService: ComponentApiService) {}
 
   onSubmit() {
-    // Call the API to save the component
-    this.http.post('/api/components', this.componentModel).subscribe(response => {
+    // Call the service to save the component
+    this.componentApiService.saveComponent(this.componentModel).subscribe(response => {
       console.log('Component saved successfully', response);
 
-      // Optionally, you can fetch the updated components list here to update the sidebar
+      // Fetch the updated components list
       this.fetchComponents();
     });
   }
 
   fetchComponents() {
-    // Example method to fetch components from the API and update the sidebar
-    this.http.get<ComponentModel[]>('/api/components').subscribe(components => {
-      // Update the sidebar with the new list of components
+    // Call the service to fetch components
+    this.componentApiService.fetchComponents().subscribe(components => {
       console.log('Updated components:', components);
     });
   }
