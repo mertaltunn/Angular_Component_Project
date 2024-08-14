@@ -1,13 +1,8 @@
-import { ComponentModel } from "./app/shared/models/ComponentModel";
 
-export const data_components: ComponentModel[] = [
-
-]
-
-export const sample_components: ComponentModel[] = [
+export const sample_components: any[] = [
   {
     id: '0',
-    name: 'Search Bar',
+    name: 'Server Search Bar',
     icon: 'bi-search',
     animation: 'animate__animated animate__fadeIn',
     description: 'A search bar allows users to search for content.',
@@ -16,7 +11,7 @@ export const sample_components: ComponentModel[] = [
   },
   {
     id: '1',
-    name: 'Tooltip',
+    name: 'Server Tooltip',
     icon: 'bi-info-circle',
     animation: 'animate__animated animate__fadeIn',
     description: 'A tooltip provides additional information on hover.',
@@ -40,7 +35,7 @@ export const sample_components: ComponentModel[] = [
   },
   {
     id: '2',
-    name: 'Popover',
+    name: 'Server Popover',
     icon: 'bi-window',
     animation: 'animate__animated animate__fadeIn',
     description: 'A popover provides additional information on click.',

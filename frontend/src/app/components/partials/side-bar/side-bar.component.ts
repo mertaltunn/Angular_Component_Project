@@ -8,6 +8,7 @@ import * as Prism from 'prismjs';
 import 'prismjs/components/prism-javascript'; 
 import 'prismjs/components/prism-typescript'; 
 import { PopOverComponent } from '../popover/popover.component';
+import { ComponentApiService } from 'src/app/services/component-api.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,8 +19,9 @@ export class SidebarComponent implements AfterViewChecked {
   componentM: ComponentModel[] = [];
   selectedComponent: ComponentModel | null = null;
   safeCode: SafeHtml | null = null;
+  hidden: boolean = false
 
-  constructor(public router: Router, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {
+  constructor(private componentApiService: ComponentApiService,public router: Router, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {
     // Adding SearchbarComponent details
     const searchbar = new SearchbarComponent();
     const tooltip = new TooltipComponent();
@@ -27,6 +29,12 @@ export class SidebarComponent implements AfterViewChecked {
     this.componentM.push(searchbar.component);
     this.componentM.push(tooltip.component);
     this.componentM.push(popover.component);
+
+    this.componentApiService.fetchComponents().subscribe((components: ComponentModel[]) => {
+      
+      this.componentM = components;
+      console.log('sidebar components:', components);
+    });
   }
 
   decodeHTMLEntities(text: string) {
@@ -37,7 +45,7 @@ export class SidebarComponent implements AfterViewChecked {
 
   selectComponent(component: ComponentModel) {
     this.selectedComponent = component;
-    this.selectedComponent.hidden = !this.selectedComponent.hidden;
+    this.hidden =!this.hidden;
     const decodedCode = this.decodeHTMLEntities(this.selectedComponent.code);
     this.safeCode = this.sanitizer.bypassSecurityTrustHtml(
       Prism.highlight(decodedCode, Prism.languages['javascript'], 'javascript')
@@ -45,7 +53,7 @@ export class SidebarComponent implements AfterViewChecked {
     this.router.navigate([component.route]);
     this.cdr.detectChanges(); // Ensure the changes are detected immediately
     this.bttonClickCode = false;
-    this.bttonClickDemo =false;
+    // this.bttonClickDemo =false;
   }
 
   ngAfterViewChecked() {
@@ -54,11 +62,11 @@ export class SidebarComponent implements AfterViewChecked {
     }
   }
   bttonClickCode = false;
-  bttonClickDemo = false;
+  // bttonClickDemo = false;
   buttonClickCode(){
     this.bttonClickCode = !this.bttonClickCode
   }
-  buttonClickDemo(){
-    this.bttonClickDemo = !this.bttonClickDemo
-  }
+  // buttonClickDemo(){
+  //   this.bttonClickDemo = !this.bttonClickDemo
+  // }
 }
