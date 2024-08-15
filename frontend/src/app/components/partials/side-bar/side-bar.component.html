@@ -20,23 +20,18 @@
       <i class="bi" [ngClass]="selectedComponent.icon"></i> {{ selectedComponent.name }}
     </h2>
 
-    <div [ngClass]="selectedComponent.animation">
-      <p>{{ selectedComponent.description }}</p>
+    <!-- Component Demo -->
+    <div [innerHTML]="demoHtml"></div>
+    <hr>
 
-      <div class="demos">
-        <div class="container-fluid"></div>
-        <router-outlet></router-outlet>
-      </div>
-      <hr>
+    <button type="button" class="btn btn-sm btn-outline-secondary me-2 toggle-code active" *ngIf="selectedComponent" (click)="buttonClickCode()">
+      Code
+    </button>
+    <hr>
 
-      <button type="button" ngClass="btn" 
-        class="btn btn-sm btn-outline-secondary me-2 toggle-code active" *ngIf="selectedComponent" (click)="buttonClickCode()" 
-        placement="bottom" ngbTooltip="Code of the Component"> Code
-      </button>
-      <hr>
-      <pre *ngIf="bttonClickCode" class="bg-dark text-light p-3 rounded text-start">
-        <code [innerHTML]="safeCode"></code>
-      </pre>
-    </div>
+    <!-- Code Snippet -->
+    <pre *ngIf="bttonClickCode" class="bg-dark text-light p-3 rounded text-start">
+      <code [innerHTML]="safeCode"></code>
+    </pre>
   </div>
 </div>

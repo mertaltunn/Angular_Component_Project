@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid form-container">
     <h1>Component Adding Page</h1>
     <form (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -10,12 +10,6 @@
             <label for="name">Component Name</label>
             <input type="text" id="name" [(ngModel)]="componentModel.name" name="name" class="form-control" required>
         </div>
-
-        <div class="form-group">
-            <label for="route">Route</label>
-            <input type="text" id="route" [(ngModel)]="componentModel.route" name="route" class="form-control">
-        </div>
-        
         
         <div class="form-group">
             <label for="icon">Icon (Bootstrap Icon Class)</label>

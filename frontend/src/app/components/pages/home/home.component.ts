@@ -21,11 +21,7 @@ export class HomeComponent {
   constructor(private componentApiService: ComponentApiService) {
     let componentObservable: Observable<ComponentModel[]>;
 
-    // componentObservable = componentApiService.fetchComponents()
-    // componentObservable.subscribe((serverComponents)=>{
-    //   this.components = serverComponents
-    //   console.log("Serverdan component çekme başarili")
-    // })
+    
   }
 
   components: ComponentModel[] = [];

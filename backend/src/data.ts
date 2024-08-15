@@ -6,8 +6,7 @@ export const sample_components: any[] = [
     icon: 'bi-search',
     animation: 'animate__animated animate__fadeIn',
     description: 'A search bar allows users to search for content.',
-    code: `<input type="text" class="form-control" placeholder="Search...">`,
-    route:"search-bar"
+    code: `<input type="text" class="form-control" placeholder="Search...">`
   },
   {
     id: '1',
@@ -17,8 +16,7 @@ export const sample_components: any[] = [
     description: 'A tooltip provides additional information on hover.',
     code: `
   <div class="container mt-3">
-    <h2>Tooltip Component</h2>
-    <button type="button" class="btn btn-outline-secondary me-2" placement="top" ngbTooltip="Tooltip on top">
+    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" placement="top" title="Tooltip on top">
         Tooltip on top
     </button>
     <button type="button" class="btn btn-outline-secondary me-2" placement="end" ngbTooltip="Tooltip on right">
@@ -30,8 +28,7 @@ export const sample_components: any[] = [
     <button type="button" class="btn btn-outline-secondary me-2" placement="start" ngbTooltip="Tooltip on left">
         Tooltip on left
     </button>
-  </div>`,
-    route:"tooltip"
+  </div>`
   },
   {
     id: '2',
@@ -78,7 +75,6 @@ export const sample_components: any[] = [
 	popoverTitle="Popover on left"
 >
 	Popover on left
-</button>`,
-    route:"popover"
+</button>`
   }
 ];

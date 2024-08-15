@@ -1,14 +1,9 @@
 import { Component, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { ComponentModel } from 'src/app/shared/models/ComponentModel';
-import { TooltipComponent } from '../tooltip/tooltip.component';
-import { SearchbarComponent } from '../search-bar/search-bar.component';
-import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import * as Prism from 'prismjs';
-import 'prismjs/components/prism-javascript'; 
-import 'prismjs/components/prism-typescript'; 
-import { PopOverComponent } from '../popover/popover.component';
-import { ComponentApiService } from 'src/app/services/component-api.service';
+import 'prismjs/components/prism-markup';
+import { ComponentApiService } from 'src/app/services/component-api.service'; // Import the service
 
 @Component({
   selector: 'app-sidebar',
@@ -19,41 +14,39 @@ export class SidebarComponent implements AfterViewChecked {
   componentM: ComponentModel[] = [];
   selectedComponent: ComponentModel | null = null;
   safeCode: SafeHtml | null = null;
-  hidden: boolean = false
+  demoHtml: SafeHtml | null = null;
+  hidden: boolean = false;
 
-  constructor(private componentApiService: ComponentApiService,public router: Router, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {
-    // Adding SearchbarComponent details
-    const searchbar = new SearchbarComponent();
-    const tooltip = new TooltipComponent();
-    const popover = new PopOverComponent();
-    this.componentM.push(searchbar.component);
-    this.componentM.push(tooltip.component);
-    this.componentM.push(popover.component);
+  bttonClickCode = false; // Initialize the button state here
 
+  constructor(
+    private componentApiService: ComponentApiService,
+    private sanitizer: DomSanitizer,
+    private cdr: ChangeDetectorRef
+  ) {
+    // Fetch components from the backend
     this.componentApiService.fetchComponents().subscribe((components: ComponentModel[]) => {
-      
       this.componentM = components;
       console.log('sidebar components:', components);
     });
   }
 
-  decodeHTMLEntities(text: string) {
-    const txt = document.createElement('textarea');
-    txt.innerHTML = text;
-    return txt.value;
-  }
-
   selectComponent(component: ComponentModel) {
     this.selectedComponent = component;
-    this.hidden =!this.hidden;
-    const decodedCode = this.decodeHTMLEntities(this.selectedComponent.code);
-    this.safeCode = this.sanitizer.bypassSecurityTrustHtml(
-      Prism.highlight(decodedCode, Prism.languages['javascript'], 'javascript')
-    );
-    this.router.navigate([component.route]);
-    this.cdr.detectChanges(); // Ensure the changes are detected immediately
+    this.hidden = !this.hidden;
+
+    // Reset the code button state
     this.bttonClickCode = false;
-    // this.bttonClickDemo =false;
+
+    // Directly use the component's HTML for demo
+    this.demoHtml = this.sanitizer.bypassSecurityTrustHtml(component.code);
+
+    // Highlight the component's code for display as text
+    this.safeCode = this.sanitizer.bypassSecurityTrustHtml(
+      Prism.highlight(component.code, Prism.languages['markup'], 'markup')
+    );
+
+    this.cdr.detectChanges(); // Ensure the changes are detected immediately
   }
 
   ngAfterViewChecked() {
@@ -61,12 +54,8 @@ export class SidebarComponent implements AfterViewChecked {
       Prism.highlightAll();
     }
   }
-  bttonClickCode = false;
-  // bttonClickDemo = false;
-  buttonClickCode(){
-    this.bttonClickCode = !this.bttonClickCode
+
+  buttonClickCode() {
+    this.bttonClickCode = !this.bttonClickCode;
   }
-  // buttonClickDemo(){
-  //   this.bttonClickDemo = !this.bttonClickDemo
-  // }
 }

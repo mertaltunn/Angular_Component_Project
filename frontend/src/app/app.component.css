@@ -1,0 +1,26 @@
+@import '~prismjs/themes/prism.css'; 
+
+.bg-custom-dark {
+  background-color: #383838;
+}
+.bg-light-gray {
+  background-color: #242424 !important; 
+  /* 242424 */  
+}
+.sidebarComps{
+  color: white;
+}
+.header{
+  color: white;
+}
+.text-white-custom {
+  color: white;
+}
+
+
+
+.btn:hover {
+  color: black;
+  background-color: rgb(50, 99, 119);
+  border-color: rgb(50, 99, 119);
+}
