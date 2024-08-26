@@ -1,6 +1,6 @@
 <div class="d-flex text-center text-white bg-custom-dark vsc-initialized">
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-light-gray" style="width: 250px; border-right: 1px solid white;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <a href="/side-bar" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <span class="fs-4 fw-bold text-white-custom">Components</span>
     </a>    
     <hr>
@@ -8,7 +8,6 @@
       <li *ngFor="let component of componentM" class="nav-item">
         <button class="sidebarComp nav-link d-flex align-items-center" type="button" (click)="selectComponent(component)">
           
-          <i class="bi" [ngClass]="component.icon"></i>
           <span class="ms-2">{{ component.name }}</span>
         </button>
       </li>
@@ -17,21 +16,33 @@
 
   <div *ngIf="selectedComponent" class="flex-grow-1 p-4">
     <h2 class="mb-3">
-      <i class="bi" [ngClass]="selectedComponent.icon"></i> {{ selectedComponent.name }}
+      {{ selectedComponent.name }}
     </h2>
 
-    <!-- Component Demo -->
-    <div [innerHTML]="demoHtml"></div>
-    <hr>
+    <div >
+      <p>{{ selectedComponent.description }}</p>
 
-    <button type="button" class="btn btn-sm btn-outline-secondary me-2 toggle-code active" *ngIf="selectedComponent" (click)="buttonClickCode()">
-      Code
-    </button>
-    <hr>
+      <div class="demos">
+        <div class="container-fluid"></div>
+        <router-outlet></router-outlet>
+      </div>
+      <hr>
 
-    <!-- Code Snippet -->
-    <pre *ngIf="bttonClickCode" class="bg-dark text-light p-3 rounded text-start">
-      <code [innerHTML]="safeCode"></code>
-    </pre>
+      <button type="button" ngClass="btn" 
+        class="btn btn-sm btn-outline-secondary me-2 toggle-code active" *ngIf="selectedComponent" (click)="buttonClickCode()" 
+        placement="bottom" ngbTooltip="Code of the Component"> Code
+      </button>
+      <hr>
+      <div *ngIf="bttonClickCode">
+        <h3>HTML Code:</h3>
+        <pre class="bg-dark text-light p-3 rounded text-start">
+          <code [innerHTML]="safeHtmlCode"></code>
+        </pre>
+        <h3>TypeScript Code:</h3>
+        <pre class="bg-dark text-light p-3 rounded text-start">
+          <code [innerHTML]="safeTsCode"></code>
+        </pre>
+      </div>
+    </div>
   </div>
 </div>

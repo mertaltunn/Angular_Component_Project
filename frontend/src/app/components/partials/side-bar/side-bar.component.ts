@@ -3,7 +3,10 @@ import { ComponentModel } from 'src/app/shared/models/ComponentModel';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import * as Prism from 'prismjs';
 import 'prismjs/components/prism-markup';
-import { ComponentApiService } from 'src/app/services/component-api.service'; // Import the service
+import 'prismjs/components/prism-typescript';
+import { ComponentApiService } from 'src/app/services/component-api.service';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,40 +16,61 @@ import { ComponentApiService } from 'src/app/services/component-api.service'; //
 export class SidebarComponent implements AfterViewChecked {
   componentM: ComponentModel[] = [];
   selectedComponent: ComponentModel | null = null;
-  safeCode: SafeHtml | null = null;
+  safeHtmlCode: SafeHtml | null = null;
+  safeTsCode: SafeHtml | null = null;
   demoHtml: SafeHtml | null = null;
-  hidden: boolean = false;
+  bttonClickCode = false;
 
-  bttonClickCode = false; // Initialize the button state here
+  htmlContent: string | undefined;
+  tsContent: string | undefined;
 
   constructor(
     private componentApiService: ComponentApiService,
     private sanitizer: DomSanitizer,
-    private cdr: ChangeDetectorRef
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef,
+    public router: Router
   ) {
-    // Fetch components from the backend
-    this.componentApiService.fetchComponents().subscribe((components: ComponentModel[]) => {
-      this.componentM = components;
-      console.log('sidebar components:', components);
-    });
+    this.componentApiService
+      .fetchComponents()
+      .subscribe((components: ComponentModel[]) => {
+        this.componentM = components;
+        console.log('sidebar components:', components);
+
+      });
   }
 
   selectComponent(component: ComponentModel) {
+    console.log('Navigating to route:', component.route);
     this.selectedComponent = component;
-    this.hidden = !this.hidden;
-
-    // Reset the code button state
     this.bttonClickCode = false;
+    this.router.navigate([component.route]);
+    this.cdr.detectChanges();
+    this.loadComponentFiles(component.name);
+  }
+ 
+  loadComponentFiles(componentName: string): void {
+    // Load the HTML file
+    this.http.get(`${componentName}.component.html`, { responseType: 'text' })
+      .subscribe({
+        next: (data) => {
+          this.htmlContent = data;
+        },
+        error: (error) => {
+          console.error('Error loading HTML file:', error);
+        },
+      });
 
-    // Directly use the component's HTML for demo
-    this.demoHtml = this.sanitizer.bypassSecurityTrustHtml(component.code);
-
-    // Highlight the component's code for display as text
-    this.safeCode = this.sanitizer.bypassSecurityTrustHtml(
-      Prism.highlight(component.code, Prism.languages['markup'], 'markup')
-    );
-
-    this.cdr.detectChanges(); // Ensure the changes are detected immediately
+    // Load the TypeScript file using dynamic import
+    const tsFilePath = `src/app/components/partials/${componentName}.component.ts`;
+    import(`src/app/components/partials/${componentName}.component.ts`)
+      .then((module) => {
+        // Here, `module` is the module exported from the TypeScript file.
+        this.tsContent = module.default.toString();
+      })
+      .catch((error) => {
+        console.error('Error loading TypeScript file:', error);
+      });
   }
 
   ngAfterViewChecked() {

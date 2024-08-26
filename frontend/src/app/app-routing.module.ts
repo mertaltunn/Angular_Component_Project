@@ -4,10 +4,11 @@ import { SearchbarComponent } from './components/partials/search-bar/search-bar.
 import { TooltipComponent } from './components/partials/tooltip/tooltip.component';
 import { PopOverComponent } from './components/partials/popover/popover.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { SidebarComponent } from './components/partials/side-bar/side-bar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  {path:"", component:SearchbarComponent, pathMatch: "full"},
+  {path:'side-bar', component:SidebarComponent, pathMatch: "full"},
   {path:"search-bar", component:SearchbarComponent, pathMatch: "full"},
   {path:"tooltip", component:TooltipComponent, pathMatch: "full"}, 
   {path:"popover", component:PopOverComponent, pathMatch: "full"}

@@ -10,16 +10,6 @@
             <label for="name">Component Name</label>
             <input type="text" id="name" [(ngModel)]="componentModel.name" name="name" class="form-control" required>
         </div>
-        
-        <div class="form-group">
-            <label for="icon">Icon (Bootstrap Icon Class)</label>
-            <input type="text" id="icon" [(ngModel)]="componentModel.icon" name="icon" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-            <label for="animation">Animation Class</label>
-            <input type="text" id="animation" [(ngModel)]="componentModel.animation" name="animation" class="form-control">
-        </div>
 
         <div class="form-group">
             <label for="description">Description</label>
@@ -27,12 +17,12 @@
         </div>
 
         <div class="form-group">
-            <label for="code">Code</label>
-            <textarea id="code" [(ngModel)]="componentModel.code" name="code" class="form-control" required></textarea>
+            <label for="route">route</label>
+            <textarea id="route" [(ngModel)]="componentModel.route" name="route" class="form-control" required></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary mt-3">Add Component</button>
     </form>
-
     <button (click)="fetchComponents()" class="btn btn-secondary mt-3">Fetch Components</button>
+    
 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ComponentApiService } from 'src/app/services/component-api.service';
 import { ComponentModel } from 'src/app/shared/models/ComponentModel';
@@ -12,15 +13,12 @@ export class HomeComponent {
     id: '1',
     name: 'asd',
     route:'weqwe',
-    icon: 'asd',
-    animation: 'asdasdasd',
     description: '',
-    code: '',
   };
 
-  constructor(private componentApiService: ComponentApiService) {
+  constructor(private componentApiService: ComponentApiService, public router:Router) {
     let componentObservable: Observable<ComponentModel[]>;
-
+    this.router =router
     
   }
 
@@ -45,6 +43,8 @@ export class HomeComponent {
       
       this.components = components;
       console.log('Updated components:', components);
+      
+      this.router.navigateByUrl("/side-bar")
     });
   }
 }
