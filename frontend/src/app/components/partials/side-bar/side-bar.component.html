@@ -24,8 +24,8 @@
       <p>{{ selectedComponent.description }}</p>
 
       <div class="demos">
-        <button class="btn btn-primary" (click)="modalComponent.openModal()">Add Sidebar Component</button>
-<app-modal #modalComponent></app-modal>
+        <button *ngIf="selectedComponent.name === 'modal'" class="btn btn-primary" (click)="modalComponent.openModal()">Open Modal</button>
+        <app-modal #modalComponent></app-modal>
         <div class="container-fluid"></div>
         <router-outlet></router-outlet>
       </div>

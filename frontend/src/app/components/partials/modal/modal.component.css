@@ -1,0 +1,17 @@
+.modal-content {
+    background-color: #343a40; /* Dark background */
+    color: #ffffff; /* White text */
+  }
+  
+  .modal-header, .modal-footer {
+    border-color: #495057; /* Darker border for header and footer */
+  }
+  
+  .btn-close {
+    filter: invert(1); /* Make the close button white */
+  }
+  
+  .modal-body {
+    background-color: #3e444a; /* Slightly different dark background for body */
+  }
+  

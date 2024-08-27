@@ -1,23 +1,19 @@
-<div class="modal-backdrop" *ngIf="isModalVisible" (click)="closeModal()"></div>
-<div class="modal" tabindex="-1" role="dialog" *ngIf="isModalVisible">
-  <div class="modal-dialog" role="document">
+<div *ngIf="showModal" class="modal d-block" tabindex="-1">
+
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Sidebar Component</h5>
-        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title">Modal Title</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
       </div>
       <div class="modal-body">
-        <!-- Your form for adding component data -->
-        <form (ngSubmit)="onSubmit()">
-          <!-- Form fields here -->
-        </form>
+        <p>Modal body content goes here.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+<div *ngIf="!showModal" class="d-none"></div>
