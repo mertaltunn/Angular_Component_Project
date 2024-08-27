@@ -11,7 +11,6 @@
           <span class="ms-2">{{ component.name }}</span>
         </button>
       </li>
-      
     </ul>
   </div>
 
@@ -24,20 +23,15 @@
       <p>{{ selectedComponent.description }}</p>
 
       <div class="demos">
-        <button class="btn btn-primary" (click)="modalComponent.openModal()">Add Sidebar Component</button>
-<app-modal #modalComponent></app-modal>
         <div class="container-fluid"></div>
         <router-outlet></router-outlet>
       </div>
       <hr>
-      
-      
 
       <button type="button" ngClass="btn" 
         class="btn btn-sm btn-outline-secondary me-2 toggle-code active" *ngIf="selectedComponent" (click)="buttonClickCode()" 
         placement="bottom" ngbTooltip="Code of the Component"> Code
       </button>
-      
       <hr>
       <div *ngIf="bttonClickCode">
         <h3>HTML Code:</h3>
@@ -49,7 +43,6 @@
           <code class="language-typescript">{{ tsContent }}</code>
         </pre>
       </div>
-      
           
     </div>
   </div>

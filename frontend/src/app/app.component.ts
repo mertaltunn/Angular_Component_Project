@@ -22,10 +22,10 @@ export class AppComponent {
     // this.componentM.push(tooltip.component);
   }
 
-  selectComponent(component: ComponentModel) {
+  // selectComponent(component: ComponentModel) {
 
-    console.log("component: ", component);
-    this.router.navigate([component.route])
-  }
+  //   console.log("component: ", component);
+  //   this.router.navigate([component.route])
+  // }
 
 }

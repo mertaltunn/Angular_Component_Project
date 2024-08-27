@@ -5,12 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/pages/home/home.component';
 import { SidebarComponent } from './components/partials/side-bar/side-bar.component';
-import { SearchbarComponent } from './components/partials/search-bar/search-bar.component';
+import { SearchbarComponent } from '../assets/components/search-bar/search-bar.component';
 import { TooltipComponent } from './components/partials/tooltip/tooltip.component';
 import { PopOverComponent } from './components/partials/popover/popover.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { ModalComponent } from './components/partials/modal/modal.component';
 
 
 
@@ -23,6 +24,7 @@ import { AppComponent } from './app.component';
       SearchbarComponent,
       TooltipComponent,
       PopOverComponent,
+      ModalComponent,
       
     ],
   imports: [
